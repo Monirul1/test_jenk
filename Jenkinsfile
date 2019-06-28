@@ -4,13 +4,14 @@ def currentBranch = env.BRANCH
 
 //println "${currentBuildNum} and ${currentBranch}"
 
-def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it.getResult().equals(null) && currentBranch}
-
-runningBuilds.each{ e ->
+def runningBuilds = currentBuild.rawBuild.getParent().builds.each{ e ->
+  
   def runningBuildNum = e.number
-  if(currentBuildNum != runningBuildNum){
+  
+  if(e.getResult().equals(null) && currentBranch && currentBuildNum != runningBuildNum){
+    
     println "This build was interrupted by the latest build of branch ${currentBranch}"
     e.doKill()
-    
   }
+  
 }
