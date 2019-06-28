@@ -16,7 +16,8 @@ jenkins = Jenkins.instance
 def currentBuildNum = currentBuild.number
 //find all the runnning builds equals to a currentbranch
 def currentBranch = env.BRANCH
-//println currentBuild
+
+println "${currentBuildNum} and ${currentBranch}"
 
 def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it.getResult().equals(null) && currentBranch}
 
