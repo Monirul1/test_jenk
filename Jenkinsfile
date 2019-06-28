@@ -13,8 +13,8 @@ jenkins = Jenkins.instance
  //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
  def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) }
 
-def branch = runningBuilds.BRANCH
- println runningBuilds
+def branch = runningBuilds.environment.get("GIT_BRANCH")
+ println branch
 
 /*
 runningBuilds.each{ e ->
