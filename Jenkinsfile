@@ -1,51 +1,29 @@
 import hudson.model.AbstractModelObject
 import hudson.model.Actionable
+import hudson.model.Result
 
 import hudson.model.AbstractItem
 import hudson.model.Job
 import hudson.model.AbstractProject
 import hudson.model.Project
 import hudson.model.*
-import hudson.model.Run 
+import hudson.model.Run
 //import jenkins.model.*
 jenkins = Jenkins.instance
 
- //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
-
- def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) && env.BRANCH == "master" }
- 
- 
- println runningBuilds
-
-
-
-
-
-/*
-runningBuilds.each{ e ->
-     
-  //   if(e.env.BRANCH == "master"){
-            //print latest running build within this branch
-      println  "RUNNINGGGG ${runningBuilds}"
-
-//}
-}
-*/
-
-
-/*
-def branch = env.BRANCH
- println branch
-
-
+//def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
+def currentBuild = currentBuild.number
+//find all the runnning builds equals to a currentbranch
+//def currentBranch = env.BRANCH
+println currentBuild
+def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it.getResult().equals(null) && env.BRANCH == "master" }
 
 
 runningBuilds.each{ e ->
-     
-     if(e.environment.get("GIT_BRANCH") == "origin/master"){
-            //print latest running build within this branch
-      println  "RUNNINGGGG ${runningBuild}"
+  def runningBuildNum = e.number
+  if(currentBuild != runningBuildNum){
+    e.doStop()
+    
+  }
+}
 
-}
-}
-*/
