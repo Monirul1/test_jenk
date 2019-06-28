@@ -1,15 +1,15 @@
-def currentBranch = build.environment.get("GIT_BRANCH")
-def currentBuildNumber = build.environment.get("BUILD_NUMBER")
+import hudson.model.AbstractModelObject
+import hudson.model.Actionable
 
-def runningBuilds = build.getProject().builds.findAll{ it.getResult().equals(null) }
+import hudson.model.AbstractItem
+import hudson.model.Job
+import hudson.model.AbstractProject
+import hudson.model.Project
+import hudson.model.*
+import hudson.model.Run 
+//import jenkins.model.*
+jenkins = Jenkins.instance
 
-runningBuilds.each{ e ->
-  runningBuildNumber = e.environment.get("BUILD_NUMBER")
-  runningBranch = e.environment.get("GIT_BRANCH")
-
-  if( runningBuildNumber != currentBuildNumber && runningBranch == currentBranch ){
-    println "interrupted by build #${currentBuildNumber} and Branch ${currentBranch}"
-    e.doStop()
-  }
-}
-
+ //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
+ def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) }
+ println runningBuilds
