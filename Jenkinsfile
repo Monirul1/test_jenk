@@ -24,7 +24,7 @@ def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it
 
 runningBuilds.each{ e ->
   def runningBuildNum = e.number
-  if(currentBuildNum == runningBuildNum){
+  if(currentBuildNum != runningBuildNum){
     echo 'IT WAS INTERRUPTED'
     e.doStop()
     
