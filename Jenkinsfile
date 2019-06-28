@@ -13,3 +13,11 @@ jenkins = Jenkins.instance
  //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
  def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) }
  println runningBuilds
+
+runningBuilds.each{ e ->
+     
+     if(e.environment.get("GIT_BRANCH") == "origin/master"){
+            //print latest running build within this branch
+        println  runningBuild
+
+}
