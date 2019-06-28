@@ -15,7 +15,7 @@ jenkins = Jenkins.instance
 
 runningBuilds.each{ e ->
      
-     if(e.BRANCH == "master"){
+     if(e.env.BRANCH == "master"){
             //print latest running build within this branch
       println  "RUNNINGGGG ${runningBuilds}"
 
