@@ -11,8 +11,17 @@ import hudson.model.Run
 jenkins = Jenkins.instance
 
  //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
- def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) }
 
+ def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) && env.BRANCH == "master" }
+ 
+ 
+ println runningBuilds
+
+
+
+
+
+/*
 runningBuilds.each{ e ->
      
   //   if(e.env.BRANCH == "master"){
@@ -21,7 +30,7 @@ runningBuilds.each{ e ->
 
 //}
 }
-
+*/
 
 
 /*
