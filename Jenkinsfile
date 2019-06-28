@@ -12,7 +12,7 @@ jenkins = Jenkins.instance
 
  //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
  def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll { it.getResult().equals(null) }
- println runningBuilds
+ //println runningBuilds
 
 runningBuilds.each{ e ->
      
