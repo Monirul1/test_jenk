@@ -18,7 +18,7 @@ runningBuilds.each{ e ->
      
      if(e.environment.get("GIT_BRANCH") == "origin/master"){
             //print latest running build within this branch
-        println  runningBuild
+      println  "RUNNINGGGG ${runningBuild}"
 
 }
 }
