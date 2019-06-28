@@ -10,7 +10,7 @@ runningBuilds.each{ e ->
   def runningBuildNum = e.number
   if(currentBuildNum == runningBuildNum){
    println "This build was interrupted"
-    e.doStop()
+    e.doKill()
     
   }
 }
