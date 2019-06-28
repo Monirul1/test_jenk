@@ -10,7 +10,7 @@ runningBuilds.each{ e ->
   def runningBuildNum = e.number
   if(currentBuildNum == runningBuildNum){
    // echo 'This build was interrupted by build #&{currentBuildNum} and ${currentBranch}'
-    e.doKill()
+    e.doStop()
     
   }
 }
