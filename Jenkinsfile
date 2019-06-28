@@ -12,7 +12,7 @@ import hudson.model.Run
 jenkins = Jenkins.instance
 
 //def runningBuilds = Jenkins.instance.getProjects("jenk-pipeline")
-def currentBuild = currentBuild.number
+def currentBuildNum = currentBuild.number
 //find all the runnning builds equals to a currentbranch
 def currentBranch = env.BRANCH
 //println currentBuild
@@ -22,7 +22,7 @@ def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it
 
 runningBuilds.each{ e ->
   def runningBuildNum = e.number
-  if(currentBuild != runningBuildNum){
+  if(currentBuildNum != runningBuildNum){
     e.doStop()
     
   }
