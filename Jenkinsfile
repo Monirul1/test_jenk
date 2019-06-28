@@ -17,7 +17,7 @@ runningBuilds.each{ e ->
      
      if(env.BRANCH == "master"){
             //print latest running build within this branch
-      println  "RUNNINGGGG ${runningBuild}"
+      println  "RUNNINGGGG ${runningBuilds}"
 
 }
 }
