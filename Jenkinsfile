@@ -8,8 +8,8 @@ def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it
 
 runningBuilds.each{ e ->
   def runningBuildNum = e.number
-  if(currentBuildNum == runningBuildNum){
-   println "This build was interrupted by build #&{currentBuildNum} and ${currentBranch}"
+  if(currentBuildNum != runningBuildNum){
+   println "This build was interrupted"
     e.doStop()
     
   }
