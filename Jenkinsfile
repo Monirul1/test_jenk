@@ -17,7 +17,7 @@ def currentBuildNum = currentBuild.number
 //find all the runnning builds equals to a currentbranch
 def currentBranch = env.BRANCH
 
-println "${currentBuildNum} and ${currentBranch}"
+//println "${currentBuildNum} and ${currentBranch}"
 
 def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it.getResult().equals(null) && currentBranch}
 
@@ -25,6 +25,7 @@ def runningBuilds = Jenkins.instance.getItem("jenk-pipeline").builds.findAll {it
 runningBuilds.each{ e ->
   def runningBuildNum = e.number
   if(currentBuildNum == runningBuildNum){
+    echo 'IT WAS INTERRUPTED'
     e.doStop()
     
   }
