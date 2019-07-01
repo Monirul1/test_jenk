@@ -9,12 +9,10 @@ def runningBuilds = currentBuild.rawBuild.getParent().builds.each{ e ->
   
   if(e.getResult().equals(null) && currentBranch == runningBuildBranch && currentBuildNum != runningBuildNum){
 
-    e.doKill()
-   // sh sleep 120
+//    e.doKill()
+     sleep 40000
     
-  } else {
-  println "HELLO"
-  }
+  } 
   
   
 }
