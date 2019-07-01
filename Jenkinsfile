@@ -1,3 +1,5 @@
+@NonCPS
+
 def currentBuildNum = currentBuild.number
 //find all the runnning builds equals to a currentbranch
 def currentBranch = env.BRANCH
