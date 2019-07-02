@@ -22,6 +22,8 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
     println "killingbuilds"
     e.doStop()
      println "donee"
-  } 
+  } else {
+    foreverLoop()
+  }
      
 }
