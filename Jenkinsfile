@@ -2,8 +2,8 @@
 //  currentBuildNum = currentBuild.number
 //currentBranch = env.BRANCH
 // builsource will run continuosly
- currentBuildNum = currentBuild.number
- currentBranch = env.BRANCH
+currentBuildNum = currentBuild.number
+currentBranch = env.BRANCH
 
 println "getting buildSource"
 def buildSource(){
@@ -11,22 +11,28 @@ def buildSource(){
   {
     print "."
   }
-  
+
 }
 
 def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
-   def runningBuildNum = e.number
-  
-  def runningBuildBranch = e.getEnvironment().BRANCH 
- 
-  println "Iterating over all builds"
-  if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
-    println "Assigning buildnum ${runningBuildNum}"
-    println "Assigning branch ${runningBuildBranch}"
-    e.doKill()
-    
+
+  try {
+    def runningBuildNum = e.number
+    def runningBuildBranch = e.getEnvironment().BRANCH
+
+    println "Iterating over all builds"
+    if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
+      println "Assigning buildnum ${runningBuildNum}"
+      println "Assigning branch ${runningBuildBranch}"
+      e.doKill()
+
+    }
+  } catch(Exception e) {
+
+    println e
+
   }
-  
+
 }
 
 }
