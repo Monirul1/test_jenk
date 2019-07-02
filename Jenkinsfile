@@ -2,8 +2,8 @@
   //currentBranch = env.BRANCH
 // builsource will run continuosly
 
- def currentBuildNum = currentBuild.number
- def currentBranch = env.BRANCH
+ //def currentBuildNum = currentBuild.number
+ //def currentBranch = env.BRANCH
 
 def buildSource(){
     for(i = 0; i < 200000; i++)
@@ -13,7 +13,7 @@ def buildSource(){
 
 }
 
-def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
+def cancelOldBuild(def currentBuildNum = currentBuild.number, def currentBranch = env.BRANCH ) { currentBuild.rawBuild.getParent().builds.each{ e ->
   
   
  def currentBuildNum = currentBuild.number
