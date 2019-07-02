@@ -29,7 +29,7 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
     }
   } catch(Exception ex) {
 
-          println ex
+    println "EXCEPTION ${ex}"
           
 
   }
