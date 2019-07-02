@@ -27,9 +27,11 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
       e.doKill()
 
     }
-  } catch(NoSuchElementException) {
+  } catch(NoSuchElementException ex) {
 
-    println "exception"
+          println(ex.toString());
+          println(ex.getMessage());
+          println(ex.getStackTrace());
 
   }
 
@@ -43,6 +45,7 @@ cancelOldBuilds()
 
 // to run
 buildSource()
+
 
 
 
