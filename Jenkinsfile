@@ -16,8 +16,7 @@ def buildSource(){
 def cancelOldBuild(def currentBuildNum = currentBuild.number, def currentBranch = env.BRANCH ) { currentBuild.rawBuild.getParent().builds.each{ e ->
   
   
- def currentBuildNum = currentBuild.number
- def currentBranch = env.BRANCH
+ 
 
   //println "Assigning runningbuildnum"
   def runningBuildNum = e.number
