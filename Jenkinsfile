@@ -3,8 +3,8 @@
 //currentBranch = env.BRANCH
 // builsource will run continuosly
 
-currentBuildNum = currentBuild.number
-currentBranch = env.BRANCH
+def currentBuildNum = currentBuild.number
+def currentBranch = env.BRANCH
 
 println "getting buildSource"
 def buildSource(){
