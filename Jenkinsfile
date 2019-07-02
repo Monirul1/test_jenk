@@ -23,5 +23,9 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
     e.doKill()
      println "donee"
   } 
+    else if(e.getResult().equals(null) && currentBuildNum == runningBuildNum && currentBranch == runningBuildBranch)
+  {
+      foreverLoop()
+  }
      
 }
