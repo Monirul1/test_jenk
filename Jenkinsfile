@@ -2,8 +2,8 @@
   //currentBranch = env.BRANCH
 // builsource will run continuosly
 
- currentBuildNum = currentBuild.number
- currentBranch = env.BRANCH
+ def currentBuildNum = currentBuild.number
+ def currentBranch = env.BRANCH
 
 def buildSource(){
     for(i = 0; i < 200000; i++)
