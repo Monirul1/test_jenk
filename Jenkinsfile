@@ -20,10 +20,9 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
   println "Iterating over all builds"
   if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
     println "killingbuilds"
-    e.doStop()
+   new java.io.IOException("Aborting build")
+      //e.doStop()
      println "donee"
-  } else {
-    foreverLoop()
-  }
+  } 
      
 }
