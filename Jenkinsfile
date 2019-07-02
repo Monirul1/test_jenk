@@ -22,8 +22,6 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
 
     println "Iterating over all builds"
     if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch && e.hasNext()){
-      println "Assigning buildnum ${runningBuildNum}"
-      println "Assigning branch ${runningBuildBranch}"
       e.doKill()
 
     }
