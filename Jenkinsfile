@@ -1,39 +1,38 @@
+
 //  currentBuildNum = currentBuild.number
-  //currentBranch = env.BRANCH
+//currentBranch = env.BRANCH
 // builsource will run continuosly
 
 currentBuildNum = currentBuild.number
 currentBranch = env.BRANCH
 
+println "getting buildSource"
 def buildSource(){
-    for(i = 0; i < 200000; i++)
+  for(i = 0; i < 200000; i++)
   {
     print "."
   }
-
+  
 }
 
 def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
   
-  
- 
-
-  //println "Assigning runningbuildnum"
   def runningBuildNum = e.number
-  //println "Assigning runningbuildbranch"
+  println "Assigning buildnum ${runningbuildnum}"
   def runningBuildBranch = e.getEnvironment().BRANCH
-  //println "Iterating over all builds"
+  println "Assigning branch ${runningbuildbranch}"
+  println "Iterating over all builds"
   if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
-   
-      e.doKill()
-      
+    
+    e.doKill()
+    
   }
-     
-}
-     
+  
 }
 
-//calling the methosd
+}
+
+println "calling the method caneloldbuild"
 cancelOldBuild()
 
 // to run
@@ -44,40 +43,9 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
   def runningBuildBranch = e.getEnvironment().BRANCH
   //println "Iterating over all builds"
   if(e.getResult().equals(null) && currentBuildNum == runningBuildNum && currentBranch == runningBuildBranch){
-   
-      buildSource()
-      
+    
+    buildSource()
+    
   }
-     
+  
 }
-
-
-/*
-def currentBuildNum = currentBuild.number
-//find all the runnning builds equals to a currentbranch
-def currentBranch = env.BRANCH
-
-def foreverLoop(){
-    for(i = 0; i < 200000; i++)
-  {
-    print "."
-  }
-
-}
-
-println "beofre iterate"
-currentBuild.rawBuild.getParent().builds.each{ e ->
-
-  println "Assigning runningbuildnum"
-  def runningBuildNum = e.number
-  println "Assigning runningbuildbranch"
-  def runningBuildBranch = e.getEnvironment().BRANCH
-  println "Iterating over all builds"
-  if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
-   
-      e.doKill()
-      
-  } 
-     
-}
-*/
