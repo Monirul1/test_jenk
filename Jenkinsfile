@@ -26,7 +26,8 @@ def cancelOldBuilds() {
       e.doKill()
 
     }
-  } catch(Exception ex) {
+  } 
+    catch(Exception ex) {
     println "HEJHFBERHJBGHJERBGHJBGJR"
     println ex
           
