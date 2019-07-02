@@ -20,12 +20,9 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
   println "Iterating over all builds"
   if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
     println "killingbuilds"
-    e.doKill()
+    e.doStop()
      println "donee"
   } 
-    else if(e.getResult().equals(null) && currentBuildNum == runningBuildNum && currentBranch == runningBuildBranch)
-  {
-      foreverLoop()
-  }
+  
      
 }
