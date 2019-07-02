@@ -22,7 +22,9 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
     println "killingbuilds"
     e.doStop()
      println "donee"
-  } 
-  
+  } else if(e.getResult().equals(null) && currentBuildNum == runningBuildNum && currentBranch == runningBuildBranch)
+  {
+    foreverLoop()
+  }
      
 }
