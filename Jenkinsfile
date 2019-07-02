@@ -28,7 +28,7 @@ def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
 }
 
 
-currentBuild.rawBuild.getParent().builds.each{ e ->
+def testing () { currentBuild.rawBuild.getParent().builds.each{ e ->
 
   //println "Assigning runningbuildnum"
   def runningBuildNum = e.number
@@ -41,4 +41,7 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
       
   }
      
+}
+
+                
 }
