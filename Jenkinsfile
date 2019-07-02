@@ -2,9 +2,8 @@
 //  currentBuildNum = currentBuild.number
 //currentBranch = env.BRANCH
 // builsource will run continuosly
-
- def currentBuildNum = currentBuild.number
- def currentBranch = env.BRANCH
+ currentBuildNum = currentBuild.number
+ currentBranch = env.BRANCH
 
 println "getting buildSource"
 def buildSource(){
@@ -15,7 +14,7 @@ def buildSource(){
   
 }
 
-currentBuild.rawBuild.getParent().builds.each{ e ->
+def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
   
   def runningBuildNum = e.number
   println "Assigning buildnum ${runningbuildnum}"
@@ -30,8 +29,10 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
   
 }
 
+}
 
 println "calling the method caneloldbuild"
+cancelOldBuilds()
 
 
 // to run
