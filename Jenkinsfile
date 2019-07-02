@@ -26,7 +26,7 @@ def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
      
 }
 
-def cancelOldBuild()
+cancelOldBuild()
 
 
 currentBuild.rawBuild.getParent().builds.each{ e ->
