@@ -37,14 +37,7 @@ cancelOldBuilds()
 
 
 // to run
-currentBuild.rawBuild.getParent().builds.each{ e ->
-  
-  def runningBuildNum = e.number
-  def runningBuildBranch = e.getEnvironment().BRANCH
-  if(e.getResult().equals(null) && currentBuildNum == runningBuildNum && currentBranch == runningBuildBranch){
-    
-    buildSource()
-    
-  }
-  
-}
+buildSource()
+
+
+
