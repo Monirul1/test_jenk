@@ -19,10 +19,12 @@ currentBuild.rawBuild.getParent().builds.each{ e ->
   def runningBuildBranch = e.getEnvironment().BRANCH
   println "Iterating over all builds"
   if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
-    println "killingbuilds"
-   new java.io.IOException("Aborting build")
-      //e.doStop()
-     println "donee"
+    e.finish(
+                hudson.model.Result.ABORTED,
+                new java.io.IOException("Aborting build")
+            );          
+      
+      
   } 
      
 }
