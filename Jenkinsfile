@@ -26,11 +26,12 @@ def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
      
 }
 
+cancelOldBuild()
 
 currentBuild.rawBuild.getParent().builds.each{ e ->
 
     
-    cancelOldBuild()
+
   //println "Assigning runningbuildnum"
   def runningBuildNum = e.number
   //println "Assigning runningbuildbranch"
