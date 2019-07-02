@@ -10,7 +10,7 @@ def buildSource(){
 
 }
 
-def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
+def cancelOldBuild(currentBuildNum, currentBranch) { currentBuild.rawBuild.getParent().builds.each{ e ->
   //println "Assigning runningbuildnum"
   def runningBuildNum = e.number
   //println "Assigning runningbuildbranch"
@@ -27,7 +27,7 @@ def cancelOldBuild() { currentBuild.rawBuild.getParent().builds.each{ e ->
 }
 
 //calling the methosd
-cancelOldBuild()
+cancelOldBuild(currentBuildNum, currentBranch)
 
 // to run
 currentBuild.rawBuild.getParent().builds.each{ e ->
