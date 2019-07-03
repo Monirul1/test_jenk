@@ -29,7 +29,7 @@ def cancelOldBuilds() {
   } 
     catch(Exception ex) {
     println "HEJHFBERHJBGHJERBGHJBGJR"
-    println ex
+    println ex.getMessage()
           
 
   }
