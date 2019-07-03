@@ -32,8 +32,8 @@ def cancelOldBuilds() {
     } 
     
   } 
-  catch(Exception ex){
-      println ex
+  catch(NoSuchElementException ex){
+    println "Caught NoSuchElementException, expected behavior."
   }
   
 }
