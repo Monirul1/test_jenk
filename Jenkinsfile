@@ -14,25 +14,26 @@ def buildSource(){
 
 }
 
-def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
+def cancelOldBuilds() {
 
   try {
-  def runningBuildNum = e.number
-  def runningBuildBranch = e.getEnvironment().BRANCH
+    currentBuild.rawBuild.getParent().builds.each{ e ->
+      def runningBuildNum = e.number
+      def runningBuildBranch = e.getEnvironment().BRANCH
 
-  println "Iterating over all builds"
-  if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
-    println "Assigning buildnum ${runningBuildNum}"
-    println "Assigning branch ${runningBuildBranch}"
-    e.doKill()
+      println "Iterating over all builds"
+      if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
+        println "Assigning buildnum ${runningBuildNum}"
+        println "Assigning branch ${runningBuildBranch}"
+        e.doKill()
+
+      }
+    } catch(Exception ex){
+      println "EXCENPTIONS"
+      println ex
+    }
 
   }
-} catch(Exception ex){
-  println "EXCENPTIONS"
-  println ex
-}
-
-}
 
 }
 
