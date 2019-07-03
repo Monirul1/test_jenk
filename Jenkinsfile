@@ -29,9 +29,9 @@ def cancelOldBuilds() {
   } 
     
     
-   catch (IndexOutOfBoundsException e) {
-                throw new NoSuchElementException();
-            }
+   catch (e) {
+
+   }
   
   
 
