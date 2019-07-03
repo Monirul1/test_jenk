@@ -16,7 +16,7 @@ def buildSource(){
 
 def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
 
- try{
+  try {
   def runningBuildNum = e.number
   def runningBuildBranch = e.getEnvironment().BRANCH
 
@@ -27,10 +27,11 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
     e.doKill()
 
   }
-} catch (Exception e){
+} catch(Exception e){
   throw e
 }
 
+}
 
 }
 
