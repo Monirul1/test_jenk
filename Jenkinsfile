@@ -1,11 +1,6 @@
-
-//  currentBuildNum = currentBuild.number
-//currentBranch = env.BRANCH
-// builsource will run continuosly
 currentBuildNum = currentBuild.number
 currentBranch = env.BRANCH
 
-println "getting buildSource"
 def buildSource(){
   for(i = 0; i < 200000; i++)
   {
@@ -38,9 +33,5 @@ def cancelOldBuilds() {
 
 }
 
-println "calling the method caneloldbuild"
 cancelOldBuilds()
-
-
-// to run
 buildSource()
