@@ -27,10 +27,10 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
     e.doKill()
 
   }
-} catch(NoSuchElementException ex){
-  println ex
+} catch(Exception ex){
+  throw ex
 }
-
+ continue
 }
 
 }
