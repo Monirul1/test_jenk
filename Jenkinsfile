@@ -24,7 +24,7 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
   if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
     println "Assigning buildnum ${runningBuildNum}"
     println "Assigning branch ${runningBuildBranch}"
-    e.doStop()
+    e.doKill()
 
   }
 } catch(NoSuchElementException ex){
