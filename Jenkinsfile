@@ -29,7 +29,7 @@ def cancelOldBuilds() {
         
       }
     } 
-    catch(ex){
+    catch(Exception ex){
         println "EXCEPTIONS"
         println ex
     }
