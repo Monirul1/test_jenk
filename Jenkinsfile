@@ -28,11 +28,12 @@ def cancelOldBuilds() {
         e.doKill()
         
       }
-    } catch(Exception ex){
-        println "EXCEPTIONS"
-        println ex
-    }
     
+    } 
+    
+  } 
+  catch(Exception ex){
+      println ex
   }
   
 }
@@ -43,3 +44,4 @@ cancelOldBuilds()
 
 // to run
 buildSource()
+
