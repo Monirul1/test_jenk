@@ -1,0 +1,23 @@
+currentBuildNum = currentBuild.number
+currentBranch = env.BRANCH
+
+def cancelOldBuilds() {
+
+  try {
+    currentBuild.rawBuild.getParent().builds.each{ e ->
+      def runningBuildNum = e.number
+      def runningBuildBranch = e.getEnvironment().BRANCH
+
+      if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
+        e.doKill()
+      }
+
+    }
+
+  }
+  catch(NoSuchElementException ex){
+    println "Caught NoSuchElementException, expected behavior."
+  }
+
+}
+cancelOldBuilds()
