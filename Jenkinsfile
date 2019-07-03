@@ -27,8 +27,8 @@ def cancelOldBuilds() { currentBuild.rawBuild.getParent().builds.each{ e ->
     e.doKill()
 
   }
-} catch(Exception e){
-  throw e
+} catch(Exception ex){
+  throw ex
 }
 
 }
