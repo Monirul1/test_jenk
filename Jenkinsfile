@@ -16,7 +16,7 @@ def buildSource(){
 
 def cancelOldBuilds() { 
   
- // try {
+  try {
     currentBuild.rawBuild.getParent().builds.each{ e ->
         def runningBuildNum = e.number
         def runningBuildBranch = e.getEnvironment().BRANCH
@@ -26,16 +26,14 @@ def cancelOldBuilds() {
       e.doKill()
 
     }
-//  } 
+  } 
     
-    /*
-    catch(Exception ex) {
-    println "HEJHFBERHJBGHJERBGHJBGJR"
-    println ex.getMessage()
-          
-
-  }
-  */
+    
+   catch (IndexOutOfBoundsException e) {
+                throw new NoSuchElementException();
+            }
+  
+  
 
 }
 
