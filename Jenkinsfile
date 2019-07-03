@@ -30,7 +30,7 @@ def cancelOldBuilds() {
     
     
    catch (e) {
-
+     println e.getMessage()
    }
   
   
