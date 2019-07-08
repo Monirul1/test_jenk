@@ -24,8 +24,8 @@ def cancelStaleBuilds() {
     }
   } catch(NoSuchElementException ex){
      println("Caught NoSuchElementException, expected behavior. No action needed.")
-  } catch(Exception x){
-     println("X was caught")
+  } catch(Exception e){
+    println(" ${e} was caught")
   }
   println("Finished checking for stale builds.")
 }
