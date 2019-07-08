@@ -1,3 +1,5 @@
+
+/*
 currentBuildNum = currentBuild.number
 currentBranch = env.BRANCH
 
@@ -32,3 +34,4 @@ def cancelOldBuilds() {
 
 cancelOldBuilds()
 buildSource()
+*/
