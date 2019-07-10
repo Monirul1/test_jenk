@@ -1,3 +1,6 @@
+import hudson.model.AbstractModelObject
+import hudson.model.Actionable
+
 def buildSource(){
   for(i = 0; i < 200000; i++)
   {
