@@ -17,10 +17,10 @@ def cancelStaleBuilds() {
                 def buildNum = build.number
                 def buildBranch = build.getEnvironment().BRANCH
 
-                if (build.isInProgress() && currentBuildNum > buildNum && currentBranch == buildBranch) {
+                if (build.getResult().equals(null) && currentBuildNum > buildNum && currentBranch == buildBranch) {
+                    build.doKill()
                     println("[cancelStaleBuilds] Build Cancelled: #${buildNum} ${buildBranch}")
                     build.description = "Superseded by build #${currentBuildNum}"
-                    build.doKill()
                 }
             }
         } catch (NoSuchElementException ex) {
@@ -32,8 +32,6 @@ def cancelStaleBuilds() {
 }
 cancelStaleBuilds()
 buildSource()
-
-
 
 /*
 currentBuildNum = currentBuild.number
