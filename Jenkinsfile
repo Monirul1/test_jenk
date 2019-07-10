@@ -1,4 +1,3 @@
-#!/usr/bin/env groovy
 @Library('cancel-stale-builds') _
 
 
