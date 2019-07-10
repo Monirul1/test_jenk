@@ -1,6 +1,3 @@
-import hudson.model.AbstractModelObject
-import hudson.model.Actionable
-
 def buildSource(){
   for(i = 0; i < 200000; i++)
   {
@@ -20,7 +17,7 @@ def cancelStaleBuilds() {
                 def buildNum = build.number
                 def buildBranch = build.getEnvironment().BRANCH
 
-                if (build.isInProgress() && currentBuildNum > buildNum && currentBranch == buildBranch) {
+                if (build.getResult().equals(null) && currentBuildNum > buildNum && currentBranch == buildBranch) {
                     build.doKill()
                     println("[cancelStaleBuilds] Build Cancelled: #${buildNum} ${buildBranch}")
                     build.description = "Superseded by build #${currentBuildNum}"
