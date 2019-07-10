@@ -1,3 +1,8 @@
+@Library('cancel-stale-builds') _
+
+
+
+/*
 def buildSource(){
   for(i = 0; i < 200000; i++)
   {
@@ -32,3 +37,4 @@ def cancelStaleBuilds() {
 }
 cancelStaleBuilds()
 buildSource()
+*/
