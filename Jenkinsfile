@@ -8,29 +8,31 @@ def buildSource(){
 
 def cancelStaleBuilds() {
 
-  println("Checking for stale builds...")
-  currentBuildNum = currentBuild.number
-  currentBranch = env.BRANCH
+    stage('Cancel Stale Builds') {
+        currentBuildNum = currentBuild.number
+        currentBranch = env.BRANCH
 
-  try {
-    currentBuild.rawBuild.getParent().builds.each{ e ->
-      def runningBuildNum = e.number
-      def runningBuildBranch = e.getEnvironment().BRANCH
+        try {
+            currentBuild.rawBuild.getParent().builds.each {build ->
+                def buildNum = build.number
+                def buildBranch = build.getEnvironment().BRANCH
 
-      if(e.getResult().equals(null) && currentBuildNum != runningBuildNum && currentBranch == runningBuildBranch){
-        println("Build #${runningBuildNum} building ${runningBuildBranch} was cancelled")
-         e.doKill()
-      }
+                if (build.getResult().equals(null) && currentBuildNum > buildNum && currentBranch == buildBranch) {
+                    println("[cancelStaleBuilds] Build Cancelled: #${buildNum} ${buildBranch}")
+                    build.description = "Superseded by build #${currentBuildNum}"
+                    build.doKill()
+                }
+            }
+        } catch (NoSuchElementException ex) {
+            println('[cancelStaleBuilds] Caught NoSuchElementException. No action needed.')
+        } catch (Exception e) {
+            println("[cancelStaleBuilds] Caught exception: ${e}")
+        }
     }
-  } catch(NoSuchElementException ex){
-     println("Caught NoSuchElementException, expected behavior. No action needed.")
-  } catch(Exception x){
-     println("X was caught")
-  }
-  println("Finished checking for stale builds.")
 }
 cancelStaleBuilds()
 buildSource()
+
 
 
 /*currentBuildNum = currentBuild.number
