@@ -1,7 +1,7 @@
 @Library('cancel-stale-builds') _
 
 
-
+cancel-stale-builds.call()
 /*
 def buildSource(){
   for(i = 0; i < 200000; i++)
