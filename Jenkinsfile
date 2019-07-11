@@ -1,3 +1,9 @@
+@Library('cancel-stale-builds') _
+
+stop.call()
+
+
+/*
 def buildSource(){
   for(i = 0; i < 200000; i++)
   {
@@ -32,7 +38,7 @@ def cancelStaleBuilds() {
 }
 cancelStaleBuilds()
 buildSource()
-
+*/
 
 
 /*currentBuildNum = currentBuild.number
