@@ -1,4 +1,4 @@
-@Library('cancel-stale-builds') _
+@Library('vmn-devops-core') _
 
 stop()
 
