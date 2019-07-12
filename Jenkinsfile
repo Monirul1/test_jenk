@@ -1,6 +1,6 @@
 @Library('vmn-devops-core') _
 
-stop()
+cancelStaleBuilds()
 
 /*
 def buildSource(){
