@@ -2,4 +2,4 @@
 
 cancelStaleBuilds()
 
-deleteDir()
+deleteDiir()
